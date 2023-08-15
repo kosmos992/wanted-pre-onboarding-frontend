@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -15,6 +16,9 @@ const SignIn = ({ setLoggedIn }) => {
   const handleMouseOut = () => {
     setShowPw(false);
   };
+
+  const navigate = useNavigate();
+  const toSignUp = () => navigate("/signup");
 
   const submit = async (e) => {
     e.preventDefault();
@@ -65,6 +69,7 @@ const SignIn = ({ setLoggedIn }) => {
       <button data-testid="signin-button" onClick={submit}>
         로그인
       </button>
+      <button onClick={toSignUp}> 회원가입 </button>
     </>
   );
 };

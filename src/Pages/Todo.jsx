@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { TODO_URL } from "../constants";
@@ -8,6 +9,8 @@ const Todo = () => {
   const [input, setInput] = useState("");
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTodoInput, setEditTodoInput] = useState("");
+  const navigate = useNavigate();
+  const toHome = () => navigate("/");
 
   useEffect(() => {
     axios.defaults.headers.common[
@@ -142,6 +145,8 @@ const Todo = () => {
           </li>
         ))}
       </ul>
+      <br />
+      <button onClick={toHome}>돌아가기</button>
     </>
   );
 };

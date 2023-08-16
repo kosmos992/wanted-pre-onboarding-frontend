@@ -29,7 +29,7 @@ const SignIn = ({ setLoggedIn }) => {
       setLoggedIn(true);
       toast.success("로그인 완료! 투두리스트로 이동합니다.");
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error("아이디와 비밀번호를 확인해주세요.");
     }
   };
 

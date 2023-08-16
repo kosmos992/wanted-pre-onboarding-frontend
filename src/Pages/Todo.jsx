@@ -44,6 +44,7 @@ const Todo = () => {
   const deleteTodo = async (id) => {
     try {
       await axios.delete(TODO_URL + `/${id}`);
+
       setTodos(todos.filter((todo) => todo.id !== id));
     } catch (error) {
       console.log(error.response.data.message);
@@ -69,10 +70,6 @@ const Todo = () => {
     } catch (error) {
       console.log(error.response.data.message);
     }
-  };
-
-  const setAsCompleted = (id, todo, completed) => {
-    editTodo(id, todo, !completed);
   };
 
   return (
@@ -120,7 +117,7 @@ const Todo = () => {
                     type="checkbox"
                     checked={todo.isCompleted}
                     onChange={() =>
-                      setAsCompleted(todo.id, todo.todo, todo.isCompleted)
+                      editTodo(todo.id, todo.todo, !todo.isCompleted)
                     }
                   />
                   <span>{todo.todo}</span>
